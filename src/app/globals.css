@@ -1,0 +1,445 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter-sans), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-heading: var(--font-inter-sans), Inter, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* ── DARK THEME (default) ────────────────────────────────────────────────── */
+:root {
+  --background: #090909;
+  --foreground: #FFFFFF;
+  --card: #111111;
+  --card-foreground: #FFFFFF;
+  --popover: #111111;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFFFFF;
+  --primary-foreground: #090909;
+  --secondary: #161616;
+  --secondary-foreground: #FFFFFF;
+  --muted: #161616;
+  --muted-foreground: #A0A0A0;
+  --accent: #161616;
+  --accent-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 255, 255, 0.2);
+  --radius: 0.75rem;
+  --sidebar: #090909;
+  --sidebar-foreground: #A0A0A0;
+  --sidebar-primary: #FFFFFF;
+  --sidebar-primary-foreground: #090909;
+  --sidebar-accent: #161616;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.04);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+/* ── LIGHT THEME VARIABLES ────────────────────────────────────────────────── */
+.light, html.light {
+  --background: #F8F9FA;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --primary: #0F172A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #F1F5F9;
+  --accent-foreground: #0F172A;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: rgba(16, 185, 129, 0.35);
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #334155;
+  --sidebar-primary: #0F172A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: rgba(16, 185, 129, 0.35);
+}
+
+/* Explicit Dark Class Tokens */
+.dark, html.dark {
+  --background: #090909;
+  --foreground: #FFFFFF;
+  --card: #111111;
+  --card-foreground: #FFFFFF;
+  --popover: #111111;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFFFFF;
+  --primary-foreground: #090909;
+  --secondary: #161616;
+  --secondary-foreground: #FFFFFF;
+  --muted: #161616;
+  --muted-foreground: #A0A0A0;
+  --accent: #161616;
+  --accent-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 255, 255, 0.2);
+  --sidebar: #090909;
+  --sidebar-foreground: #A0A0A0;
+  --sidebar-primary: #FFFFFF;
+  --sidebar-primary-foreground: #090909;
+  --sidebar-accent: #161616;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.04);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+/* ── BASE STYLES ─────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ── LIGHT MODE OVERRIDES FOR HARDCODED DARK UTILITIES ───────────────────── */
+
+/* 1. Page & Card Background Overrides */
+.light .bg-\[\#0A0A0A\],
+.light .bg-\[\#090909\],
+.light .bg-\[\#0D1512\],
+.light .bg-black {
+  background-color: #F8F9FA !important;
+}
+
+.light .bg-\[\#111111\],
+.light .bg-\[\#141414\],
+.light .bg-\[\#161616\],
+.light .bg-\[\#1a1a1a\] {
+  background-color: #FFFFFF !important;
+}
+
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/\[0\.03\],
+.light .bg-white\/\[0\.04\],
+.light .bg-white\/\[0\.05\],
+.light .bg-white\/5 {
+  background-color: #F1F5F9 !important;
+}
+
+.light .bg-white\/\[0\.08\],
+.light .bg-white\/10 {
+  background-color: #E2E8F0 !important;
+}
+
+/* 2. Border Overrides */
+.light .border-white\/\[0\.04\],
+.light .border-white\/\[0\.05\],
+.light .border-white\/\[0\.06\],
+.light .border-white\/\[0\.08\],
+.light .border-white\/10,
+.light .border-white\/20,
+.light .divide-white\/\[0\.04\],
+.light .divide-white\/\[0\.05\],
+.light .divide-white\/\[0\.06\] {
+  border-color: #E2E8F0 !important;
+}
+
+/* 3. Text Color Overrides */
+.light .text-white {
+  color: #0F172A !important;
+}
+
+.light .text-\[\#A0A0A0\],
+.light .text-\[\#888888\],
+.light .text-\[\#666666\],
+.light .text-\[\#555555\],
+.light .text-\[\#444444\] {
+  color: #64748B !important;
+}
+
+/* Preserve bright green/accent texts */
+.light .text-\[\#10B981\],
+.light .text-emerald-400 {
+  color: #059669 !important;
+}
+
+.light .text-\[\#3B82F6\] {
+  color: #2563EB !important;
+}
+
+.light .text-\[\#8B5CF6\] {
+  color: #7C3AED !important;
+}
+
+/* Solid Colored Buttons - Keep text legible */
+.light .bg-\[\#10B981\],
+.light button.bg-\[\#10B981\] {
+  background-color: #10B981 !important;
+}
+
+.light .bg-\[\#10B981\] .text-black,
+.light .bg-\[\#10B981\] span,
+.light button.bg-\[\#10B981\] * {
+  color: #000000 !important;
+}
+
+/* ── HOVER READABILITY PROTECTION (LIGHT MODE) ───────────────────────────── */
+
+/* Prevent hover:text-white from turning text white on light backgrounds */
+.light .hover\:text-white:hover,
+.light .group:hover .group-hover\:text-white,
+.light [role="button"]:hover,
+.light button:hover,
+.light a:hover {
+  color: #0F172A !important;
+}
+
+/* Maintain accent hover colors where specified */
+.light .hover\:text-\[\#10B981\]:hover,
+.light .hover\:text-emerald-400:hover {
+  color: #059669 !important;
+}
+
+/* Hover Backgrounds in Light Mode */
+.light .hover\:bg-white\/\[0\.08\]:hover,
+.light .hover\:bg-white\/10:hover,
+.light .hover\:bg-white\/20:hover,
+.light .hover\:bg-white\/5:hover,
+.light .hover\:bg-white\/\[0\.03\]:hover,
+.light .hover\:bg-\[\#161616\]:hover,
+.light .hover\:bg-muted:hover,
+.light .hover\:bg-muted\/50:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Table Row Hovers in Light Mode */
+.light tr:hover,
+.light table tbody tr:hover {
+  background-color: #F1F5F9 !important;
+}
+
+.light tr:hover td,
+.light table tbody tr:hover td {
+  color: #0F172A !important;
+}
+
+.light tr:hover td.text-red-400,
+.light table tbody tr:hover td.text-red-400 {
+  color: #DC2626 !important;
+}
+
+.light tr:hover td.text-emerald-300,
+.light tr:hover td.text-\[\#10B981\],
+.light table tbody tr:hover td.text-emerald-300 {
+  color: #059669 !important;
+}
+
+/* Card Hover States in Light Mode */
+.light .dmp-diff-card:hover,
+.light .dmp-compare-card:hover,
+.light .card:hover {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08) !important;
+}
+
+.light .dmp-diff-card:hover .dmp-diff-card-title,
+.light .dmp-diff-card:hover .dmp-diff-card-body {
+  color: #0F172A !important;
+}
+
+.light .dmp-country-pill-default:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+  border-color: #94A3B8 !important;
+}
+
+/* ── HOVER READABILITY PROTECTION (DARK MODE) ────────────────────────────── */
+
+.dark .dmp-diff-card:hover,
+.dark .dmp-compare-card:hover {
+  background-color: #141414 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12) !important;
+}
+
+.dark .dmp-diff-card:hover .dmp-diff-card-title {
+  color: #FFFFFF !important;
+}
+
+.dark .dmp-diff-card:hover .dmp-diff-card-body {
+  color: #C0C0C0 !important;
+}
+
+.dark tr:hover,
+.dark table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark tr:hover td,
+.dark table tbody tr:hover td {
+  color: #FFFFFF !important;
+}
+
+.dark .dmp-country-pill-default:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 4. Top Navigation Specific Light Overrides */
+.light .dmp-top-nav {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .dmp-select-trigger {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.light .dmp-select-content {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light .dmp-brand-label-text {
+  color: #64748B !important;
+}
+
+.light .dmp-brand-name-text {
+  color: #0F172A !important;
+}
+
+.light .dmp-country-pill-default {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+/* 5. Hero Banner & Card Gradients in Light Mode */
+.light .dmp-hero-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 50%, #FFFFFF 100%) !important;
+  border-color: #BBF7D0 !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light .dmp-stats-grid {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.light .dmp-stats-divider-rb,
+.light .dmp-stats-divider-b,
+.light .dmp-stats-divider-r {
+  border-color: #E2E8F0 !important;
+}
+
+.light .dmp-compare-card,
+.light .dmp-diff-card {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+}
+
+.light .dmp-table-head-row {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.light .dmp-cta-banner {
+  background: linear-gradient(to right, #ECFDF5 0%, #FFFFFF 50%, #F5F3FF 100%) !important;
+  border-color: #A7F3D0 !important;
+}
+
+.light .dmp-step-pill {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+/* 6. Sidebar Light Styling */
+.light [data-sidebar="sidebar"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+.light [data-sidebar="sidebar"] button,
+.light [data-sidebar="sidebar"] a,
+.light [data-sidebar="sidebar"] span {
+  color: #334155 !important;
+}
+
+.light [data-sidebar="sidebar"] button:hover,
+.light [data-sidebar="sidebar"] a:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.light [data-sidebar="sidebar"] [data-active="true"] {
+  background-color: #ECFDF5 !important;
+  color: #059669 !important;
+  font-weight: 600 !important;
+}
+
+/* 7. Radix Popover Options in Light Mode */
+.light [data-radix-popper-content-wrapper] [role="listbox"] {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.light [data-radix-popper-content-wrapper] [role="option"] {
+  color: #0F172A !important;
+}
+
+.light [data-radix-popper-content-wrapper] [role="option"]:hover,
+.light [data-radix-popper-content-wrapper] [role="option"]:focus {
+  background-color: #ECFDF5 !important;
+  color: #059669 !important;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}

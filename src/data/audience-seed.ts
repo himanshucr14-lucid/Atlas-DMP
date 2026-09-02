@@ -1,0 +1,102 @@
+import type { AIEngineResult } from "@/lib/connectors/types"
+
+export const defaultAudienceData: {
+  audienceIntel: AIEngineResult["audienceIntel"]
+  audienceQualityIndicators: AIEngineResult["audienceQualityIndicators"]
+  databaseCohortOverlap: AIEngineResult["databaseCohortOverlap"]
+} = {
+  audienceIntel: {
+    profileName: "Global Mobile App User Cohort",
+    highIntentUsers: [
+      "High LTV In-App Converters (Purchased in last 14 days)",
+      "Daily Active Power Users (>5 sessions/day)",
+      "OEM Device Pre-install Responders",
+      "Rewarded SDK Video Completion Cohort",
+    ],
+    behavioralInsights: [
+      "Peak user engagement occurs between 19:00 and 23:00 local time.",
+      "High affinity for zero-friction OEM pre-installs on Samsung & Xiaomi hardware.",
+      "65% of conversions originate from 5G devices with high memory capacity.",
+      "Day-7 retention reaches 28% on SDK Rewarded Video ad placements.",
+      "Strong discount and cashback sensitivity observed in Tier 2/3 markets.",
+    ],
+    interestCategories: ["Mobile Technology", "Digital Payments", "Online Gaming", "Streaming Media", "E-Commerce"],
+    devicePreferences: ["Flagship Android Devices (Samsung S-series, OnePlus)", "iOS 16+ Devices (iPhone 13/14/15)", "Mid-Tier OEM Devices (Xiaomi Redmi, Realme UI)"],
+    trafficOpportunities: ["OEM App Wall Placements", "Rewarded SDK Video Inventory", "In-App Native Feed Ad Units", "DSP Programmatic Exchange Auctions"],
+    demographics: {
+      age: "25 - 34 years (54%)",
+      gender: "Balanced Male / Female split (51% M / 49% F)",
+      occupation: "Tech Professionals & Mobile-First Digital Natives",
+      education: "University Graduate / Professional Degree",
+      income: "Mid-to-High Disposable Income Tier",
+      relationshipStatus: "Single / Young Families",
+      locationSplit: [
+        { label: "United States", percentage: 38 },
+        { label: "India", percentage: 24 },
+        { label: "United Kingdom", percentage: 18 },
+        { label: "Germany", percentage: 12 },
+        { label: "Brazil", percentage: 8 },
+      ],
+      genderSplit: { male: 51, female: 49 },
+    },
+    deviceSpecs: {
+      deviceTier: "High-End Smartphone (6GB+ RAM)",
+      os: "Android 12+ / iOS 16+",
+      preferredLanguage: "English / Localized",
+      carrier: "5G / High-Speed Wi-Fi",
+      networkQuality: "Optimal (Low Latency)",
+      networkDistribution: [
+        { type: "5G", percentage: 65 },
+        { type: "4G/LTE", percentage: 30 },
+        { type: "Wi-Fi", percentage: 5 },
+      ],
+    },
+    verticalBehaviors: {
+      travel: "Medium Affinity (24%)",
+      finance: "High Affinity (68%)",
+      shopping: "High Affinity (74%)",
+      gaming: "Medium Affinity (42%)",
+      ott: "High Affinity (82%)",
+      music: "Medium Affinity (56%)",
+      reading: "Low Affinity (18%)",
+      health: "Medium Affinity (32%)",
+      foodDelivery: "High Affinity (78%)",
+      rideSharing: "High Affinity (72%)",
+      investment: "Medium Affinity (44%)",
+      crypto: "Low Affinity (15%)",
+      insurance: "Medium Affinity (38%)",
+      loan: "High Affinity (62%)",
+      credit: "High Affinity (66%)",
+      digitalWallet: "High Affinity (88%)",
+      payment: "High Affinity (92%)",
+    },
+    engagementPatterns: {
+      avgSessionLength: "6m 45s",
+      dailyActivePattern: "Peak 19:00 - 22:00 IST",
+      weeklyActivePattern: "Wednesday - Sunday High",
+      mostActiveHours: "19:00 - 23:00 Local",
+      mostActiveDays: "Friday & Saturday",
+      intentDistribution: "High In-App Purchase Intent",
+    },
+  },
+  audienceQualityIndicators: {
+    returningUserPct: "42%",
+    repeatPurchaserPct: "28%",
+    highValueUserPct: "35%",
+    organicAffinity: "82%",
+    paidAffinity: "64%",
+    referralAffinity: "48%",
+    offerSensitivity: "High",
+    discountAffinity: "Medium-High",
+    subscriptionAffinity: "High (74%)",
+    loyaltyProbability: "76%",
+    earlyChurnRisk: "Low (14%)",
+    longTermRetentionProb: "High (68%)",
+  },
+  databaseCohortOverlap: [
+    { cohortName: "High LTV Engaged Users", size: "12.4M Profiles", overlapPercentage: 84, dspMatchRate: "94%" },
+    { cohortName: "OEM Device Passkey Segment", size: "8.6M Devices", overlapPercentage: 76, dspMatchRate: "88%" },
+    { cohortName: "Rewarded SDK Converters", size: "5.2M Profiles", overlapPercentage: 68, dspMatchRate: "82%" },
+    { cohortName: "Organic Brand Advocates", size: "3.1M Profiles", overlapPercentage: 52, dspMatchRate: "78%" },
+  ],
+}
