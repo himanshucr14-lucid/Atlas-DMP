@@ -4,7 +4,8 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Eye, EyeOff, ShieldCheck } from "lucide-react"
-
+import BlurText from "@/components/BlurText"
+import GradientText from "@/components/GradientText"
 // ─────────────────────────────────────────────
 //  Animated Network Canvas — right-side visual
 // ─────────────────────────────────────────────
@@ -254,12 +255,23 @@ export default function InternalAuthPortal() {
               <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
                 Internal Data Management Platform
               </p>
-              <h1 style={{ fontSize: 28, fontWeight: 700, color: "#fff", letterSpacing: "-0.025em", lineHeight: 1.2, marginBottom: 10 }}>
+              
+              <GradientText
+                colors={["#40ffaa", "#40c9ff", "#40ffaa"]}
+                animationSpeed={3}
+                showBorder={false}
+                className="text-3xl tracking-tight mb-2 -ml-2"
+              >
                 Welcome back
-              </h1>
-              <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.38)", lineHeight: 1.65, fontWeight: 400 }}>
-                Sign in to access audience intelligence, campaign analytics, DSP tools and the internal media buying platform.
-              </p>
+              </GradientText>
+
+              <BlurText
+                text="Sign in to access audience intelligence, campaign analytics, DSP tools and the internal media buying platform."
+                delay={50}
+                animateBy="words"
+                direction="top"
+                className="text-[13.5px] text-white/40 leading-relaxed font-normal"
+              />
             </div>
 
             {/* Form */}
